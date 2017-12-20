@@ -1,7 +1,8 @@
+
 <?php
 print_r($_GET);
 $ten=$_GET["ten"];
-$id=$_GET["ma"];
+$id=$_GET["id"];
 ?>
 <?php
 	try{
@@ -30,9 +31,12 @@ $Thuho=postIndex("Thuho");
 $Hinhthucchuyen=postIndex("Hinhthucchuyen");
 $Mota=postIndex("Mota");
 $Thanhtoan=postIndex("Thanhtoan");
-$Cuocphi=postIndex("Cuocphi");
-$Ngaytao=postIndex("Ngaytao");
+$Tennguoinhan=postIndex("Tennguoinhan");
+$Diachinhan=postIndex("Diachinhan");
+$Sdtnguoinhan=postIndex("Sdtnguoinhan");
 ?>
+
+<legend>Thông tin đơn hàng</legend>
 <form action="formtaodonhang.php?ten=<?php echo $ten?> & id=<?php echo $id?>" method="post" >
            
             <table align="center"
@@ -51,8 +55,11 @@ $Ngaytao=postIndex("Ngaytao");
             <tr><td>Mô tả: </td><td><input type="text" name="Mota" required></td></tr></br>
             <tr><td>Thanh toán: </td><td><input type="radio" checked="checked" name="Thanhtoan" value="1" />Tiền mặt
             							<input type="radio" name="Thanhtoan" value="2" />Chuyển khoản</td></tr></br>
-            <tr><td>Cước phí: </td><td><input type="text" name="Cuocphi" required ></td><td></td></tr></br>
-           	<tr><td> Ngày Tạo đơn: </td><td><input type="date" name="Ngaytao"</td></td></tr>
+          
+            <hr />
+            <tr><td>Tên người nhận:</td><td><input type="text" name="Tennguoinhan" required/></td></tr>
+            <tr><td>Địa chỉ người nhận:</td><td><input type="text" name="Diachinhan" required /></td></tr>
+            <tr><td>Số điện thoại người nhận:</td><td><input type="text" name="Sdtnguoinhan" required</td></tr>
             <tr><td><input type="submit" name="taodh" value="Tạo" /></td>
             
           	 	
@@ -60,22 +67,18 @@ $Ngaytao=postIndex("Ngaytao");
             <tr><td><?php ?></td>
             </tr>
             </form>
+            
 			<?php
 			if (isset($_POST["taodh"]))
 	
 
 	{
-	$stmt=$pdh->prepare("insert into donhang(IDnvvanchuyenhang,IDnvquanlydonhang,,Ngaytaodonhang,Ngayduyetdon,Xuly,IDkh) values(:IDnvchuyenhang,:IDnvquanlydonhang,:Ngaytaodonhang,:Ngayduyetdon,:Xuly,:IDkh) where IDkh='$id'" );
-	$stmt->execute(array(":IDnvchuyenhang"=="",":IDnvquanlydonhang"=="",":ngaytaodonhang"=>$_POST["Ngaytao"],":Ngayduyetdonhang"=="",":Xuly"=='7',":IDkh"=='$id'));
-	
-
-
-	$stmt=$pdh->prepare("insert into thongtindonhang(Loaihang,Khoiluong,Thuho,Hinhthucchuyen,Mota,Thanhtoan,Cuocphi) values(:Loaihang ,:Khoiluong,:Thuho, :Hinhthucchuyen, :Mota ,:Thanhtoan ,:Cuocphi)where IDkh='$id'");
-	$stmt->execute( array(":Loaihang"=>$_POST["Loaihang"],":Khoiluong"=>$_POST["Khoiluong"], ":Thuho"=>$_POST["Thuho"] , ":Hinhthucchuyen"=>$_POST["Hinhthucchuyen"]    ,":Mota"=>$_POST["Mota"],      ":Thanhtoan"=>$_POST["Thanhtoan"], ":Cuocphi"=>$_POST["Cuocphi"]));
-
+	$sql="insert into donhang(Xuly,IDkh,Loaihang,Khoiluong,Thuho,Hinhthucchuyen,Mota,Thanhtoan,Tennguoinhan,Diachinhan,Sdtnguoinhan,Cuocphi) values(:Xuly,:IDkh,:Loaihang,:Khoiluong,:Thuho,:Hinhthucchuyen,:Mota,:Thanhtoan,:Tennguoinhan,:Diachinhan,:Sdtnguoinhan,:Cuocphi)";
+	$arr = array(":Xuly"=>7,  ":IDkh"=>$id,   ":Loaihang"=>$_POST["Loaihang"],  ":Khoiluong"=>$_POST["Khoiluong"],  ":Thuho"=>$_POST['Thuho'],   ":Hinhthucchuyen"=>$_POST['Hinhthucchuyen'] ,   ":Mota"=>$_POST['Mota'],     ":Thanhtoan"=>$_POST['Thanhtoan'],    ":Tennguoinhan"=>$_POST['Tennguoinhan'],":Diachinhan"=>$_POST['Diachinhan'],":Sdtnguoinhan"=>$_POST['Sdtnguoinhan'],":Cuocphi"=>30000);
+	$stmt=$pdh->prepare($sql);
+	$stmt->execute($arr);
 	$n = $stmt->rowCount();
-	
-if($n>=1)
+	if($n>=1)
 		{
 				echo"đăng ký thành công";
 				}
