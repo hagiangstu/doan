@@ -73,7 +73,7 @@ $Sdtnguoinhan=postIndex("Sdtnguoinhan");
 	
 
 	{
-	$sql="insert into donhang(Xuly,IDkh,Loaihang,Khoiluong,Thuho,Hinhthucchuyen,Mota,Thanhtoan,Tennguoinhan,Diachinhan,Sdtnguoinhan,Cuocphi) values(:Xuly,:IDkh,:Loaihang,:Khoiluong,:Thuho,:Hinhthucchuyen,:Mota,:Thanhtoan,:Tennguoinhan,:Diachinhan,:Sdtnguoinhan,:Cuocphi)";
+	$sql="insert into donhang(Xuly,IDkh,Loaihang,Khoiluong,Thuho,Hinhthucchuyen,Mota,Thanhtoan,Tennguoinhan,Diachinhan,Sdtnguoinhan,Cuocphi,Ngaytaodonhang) values(:Xuly,:IDkh,:Loaihang,:Khoiluong,:Thuho,:Hinhthucchuyen,:Mota,:Thanhtoan,:Tennguoinhan,:Diachinhan,:Sdtnguoinhan,:Cuocphi, CURRENT_TIME())";
 	$arr = array(":Xuly"=>7,  ":IDkh"=>$id,   ":Loaihang"=>$_POST["Loaihang"],  ":Khoiluong"=>$_POST["Khoiluong"],  ":Thuho"=>$_POST['Thuho'],   ":Hinhthucchuyen"=>$_POST['Hinhthucchuyen'] ,   ":Mota"=>$_POST['Mota'],     ":Thanhtoan"=>$_POST['Thanhtoan'],    ":Tennguoinhan"=>$_POST['Tennguoinhan'],":Diachinhan"=>$_POST['Diachinhan'],":Sdtnguoinhan"=>$_POST['Sdtnguoinhan'],":Cuocphi"=>30000);
 	$stmt=$pdh->prepare($sql);
 	$stmt->execute($arr);
