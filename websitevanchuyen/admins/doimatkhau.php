@@ -3,15 +3,7 @@
 print_r($_GET);
 $ten=$_GET["ten"]; 
 ?>
-<?php
-function postIndex($index, $value="")
-{
-	if (!isset($_POST[$index]))	return $value;
-	return trim($_POST[$index]);
-}
- $sua=postIndex("sua");
- $xoa=postIndex("xoa");
- ?>
+
  <?php
  try{
 	$pdh=new PDO("mysql:host=localhost;dbname=webchuyenhang","root","");
@@ -21,7 +13,7 @@ function postIndex($index, $value="")
 		echo $e->getMessage(); exit;
 	}
 		
-			$stmt=$pdh->prepare(" SELECT * FROM khachhang JOIN account ON khachhang.Username = account.Username");
+			/*$stmt=$pdh->prepare(" SELECT * FROM  account where Username='$ten'");
 			$stmt->execute();
 			$r=$stmt->fetchAll();
 			?>
@@ -39,13 +31,34 @@ function postIndex($index, $value="")
 					
                     
 		
-		}	
+		}	*/
 		//print_r($r);
 	
 			?>
+            <?php
+			function checkPass($string)
+{
+	if(strlen($string)>=8){
+		if (preg_match("/^([AZ-az])([\w_\.!@#$%^&*()]+)*$/",$string)) 
+		  return true;
+		return false;
+	}
+	else return false;
+}
+            ?>
+		<?php
+        function postIndex($index, $value="")
+        {
+            if (!isset($_POST[$index]))	return $value;
+            return trim($_POST[$index]);
+        }
+         $sm=postIndex("sm");
+         $Password=postIndex("Password");
+		 $Password1=postIndex("Password1");
+         ?>
 	
     
-	<form action="sua.php?ten=<?php echo $ten?>" method="post" >
+	<form action="doimatkhau.php?ten=<?php echo $ten?>" method="post" >
            
             <table align="center">
              <tr><td>Uername:</td><td><input  type="tel" value="<?php echo "$ten"?>" name="Username"</td></tr>
@@ -54,34 +67,26 @@ function postIndex($index, $value="")
             <hr />
              
             
-            <tr><td><input type="submit" name="sua" value="Sửa"</td></tr>
+            <tr><td><input type="submit" name="sm" value="Sửa"</td></tr>
             <?php
-        /*   	$err= "";
-if ($sua !="")
+           	$err= "";
+if ($sm !="")
 {
 	
 	if ($Password!= $Password1) 	{$err .="Mật khẩu và mật khẩu nhập lại không khớp. <br>";}
-	if(str_word_count($Tenkh)<2) 	{$err .="Họ tên phải chứa ít nhất 2 từ ";}
-
+	if (checkPass($Password)==false) 
+			{$err.="Mật khẩu phải có 8 ký tự, có ít nhất 1 ký tự số và 1 ký tự Hoa và 1 ký tự Thường <br>";}
 	
-		if (checkEmail($Email)==false) {
-			echo "Định dạng email sai!<br>";
-		}
-		if (checkPass($Password)==false) 
-			{echo "Mật khẩu phải có 8 ký tự, có ít nhất 1 ký tự số và 1 ký tự Hoa và 1 ký tự Thường <br>";}
-		if (checkSdt($Sdt)==false) 
-			echo "Vui lòng nhập đúng sđt!<br>";
 }
 	if($err != "")
 	{
 	echo $err;
 	}
 	else
-			if(isset($_POST["sua"])){
-			$stmt=$pdh->prepare(" update account set Password=".$Password);
+			if(isset($_POST["sm"])){
+			$stmt=$pdh->prepare(" UPDATE account set Password='$Password' where Username='$ten'");
 			$stmt->execute(); 
-			$stmt=$pdh->prepare(" update khachhang set Tenkh=".$Tenkh.",Diachi=".$Diachi.",Gioitinh=".$Gioitinh.",Sdt=".$Sdt.",Email=".$Email.",Ngaysinh=".$Ngaysinh.",Loaikh=".$Loaikh);
-			$stmt->execute(); 
+			
 			$n=$stmt->rowCount();
 			if($n>=1)
 		{
@@ -91,5 +96,5 @@ if ($sua !="")
 				echo"cập nhật thất bại";
 		
 		
-}*/
+}
 ?>
