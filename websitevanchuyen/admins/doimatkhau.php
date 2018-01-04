@@ -12,6 +12,7 @@
 <?php 
 print_r($_GET);
 $ten=$_GET["ten"];
+$User=$_GET["User"];
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -26,15 +27,16 @@ $ten=$_GET["ten"];
 	<div class="header"><img src="../images/banner.jpg" width="1333" height="120" /></div>
     <div class="menu">
     	<ul >
-        	<li><a href="indexadmin.php?ten=<?php echo $ten?>">Trang Chủ</a></li>
+        	<li><a href="../modul/indexadmin.php?ten=<?php echo $ten?>">Trang Chủ</a></li>
             <li><a href="#">Quy Trình Giao Hàng</a></li>
-            <li><a href="#">Liên Hệ</a></li> 
-            <li><a href="indexadmin.php?ten=<?php echo $ten?>"><?php echo  "Xin chào ".$ten?></a></li>
-            <li><a href="dangxuat.php">Đăng xuất</a> </li>
-            <li>&nbsp;</li>
-            <li>&nbsp;</li>
-            <li>&nbsp;</li>
+            <li><a href="#">Liên Hệ</a></li>
            
+            <li><a href="indexadmin.php?ten=<?php echo $ten?>"><?php echo  "Xin chào ".$ten?></a></li>
+            <li><a href="../modul/dangxuat.php">Đăng xuất</a> </li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+            <li>&nbsp;</li>
+          
           
         </ul>
         
@@ -58,7 +60,7 @@ $ten=$_GET["ten"];
         </div>
         <div class="right">
         	<table align="center">
-             <tr><td><?php ?></td></tr>
+             <tr><td><?php include"PHPdoimatkhau.php"?></td></tr>
              </table>
             </div>
         </div>

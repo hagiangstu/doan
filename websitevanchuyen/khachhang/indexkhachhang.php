@@ -22,7 +22,7 @@ echo $ten;
 	catch(Exception $e){
 		echo $e->getMessage(); exit;
 	}
-	$id;$name;
+
 			$stmt=$pdh->prepare("Select * FROM khachhang where Username= '$ten'");
 			$stmt->execute();
 			$r=$stmt->fetchAll();
@@ -31,8 +31,8 @@ echo $ten;
 				$name=$row1["Username"];
 				
 			}
-			print_r($r);
-			echo $id;
+		
+	$id=$id;
 			
 ?> 
 
@@ -55,20 +55,16 @@ echo $ten;
   <div class="header"><img src="../images/banner.jpg" width="1333" height="120" /></div>
   <div class="menu">
     <ul >
-      <li><a href="../index.php">Trang Chủ</a></li>
-      <li><a href="#">Bảng Giá</a></li>
+      <li><a href="indexkhachhang.php?ten=<?php echo $ten?>">Trang Chủ</a></li>
       <li><a href="#">Quy Trình Giao Hàng</a></li>
       <li><a href="#">Liên Hệ</a></li>
-      <li><a href="../modul/dangky.php">Đăng ký</a></li>
-      <li><?php echo  "Xin chào ".$ten?></li>
+
+      <li><a href="indexkhachhang.php?ten=<?php echo $ten?>"><?php echo  "Xin chào ".$ten?></a></li>
       <li><a href="../modul/dangxuat.php">Đăng xuất</a></li>
       <li>&nbsp;</li>
       <li>&nbsp;</li>
       <li>&nbsp;</li>
-      <li class="timkiem">
-        <input type="text" name="tk" value="   mã đơn hàng cần tìm..."  size="40px"/>
-        <input type="submit" name="tiemkiem" value="Tìm" size="10px" />
-      </li>
+     
     </ul>
   </div>
   <div class="content">
@@ -76,8 +72,10 @@ echo $ten;
       <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
       <div class="danhsachmuc">
         <ul>
-          <li><a href="formthongtindonhang.php?ten	=<?php echo $ten?>& id=<?php echo $id?>">Thông tin đơn hàng</a></li>
-          <li><a href="formtaodonhang.php?ten=<?php echo $ten?> & id=<?php echo $id?>">Tạo đơn hàng</a></li>
+          <li><a href="quanlydonhang.php?ten=<?php echo $ten?>& id=<?php echo $id?>">Thông tin đơn hàng</a></li>
+          <li><a href="taodonhang.php?ten=<?php echo $ten?> & id=<?php echo $id?>">Tạo đơn hàng</a></li>
+          <li><a href="doimatkhau.php?ten=<?php echo $ten?> ">Đổi mật khẩu</a></li>
+         
         </ul>
       </div>
       <!--K?T THÚC M?C DANH SÁCH-->
@@ -86,10 +84,10 @@ echo $ten;
         <p style="text-align:center; color:#000; margin:10px; font-size:15px">TỔNG ĐÀI: 0123 4321 123</p>
         <p style="text-align:center; color:#000; margin:10px; font-size:15px">ĐỊA CHỈ LIÊN HỆ: 123F/321 LÊ LỢI TPHCM</p>
       </div>
-      <!--KẾT THÚC MỤC DANH SÁCH-->
+     
       <img src="../images/icon2.png" width="279" height="231" /> <img src="../images/icon3.png" width="281" height="208" /> </div>
-    <div class="right"> Thông tin người dùng </div>
-  </div>
+    <div class="right">
+    	
 </div>
 <!-- InstanceEndEditable -->
 <div class="clear"></div>

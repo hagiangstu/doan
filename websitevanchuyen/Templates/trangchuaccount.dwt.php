@@ -22,12 +22,11 @@ $ten=$_GET["ten"];
   <div class="menu">
     <ul >
       <li><a href="../modul/index.php">Trang Chủ</a></li>
-      <li><a href="#">Bảng Giá</a></li>
+      <li><a href="../modul/banggia.php">Bảng Giá</a></li>
       <li><a href="#">Quy Trình Giao Hàng</a></li>
       <li><a href="#">Liên Hệ</a></li>
-      <li><a href="../modul/modul/dangky.php">Đăng ký</a></li>
       <li><?php 
-	  if(isset($_SESSION["dadangnhap"]))
+	//  if(isset($_SESSION["dadangnhap"]))
 	   echo  "Xin chào ".$ten;
 	   ?>
        </li>
@@ -35,9 +34,7 @@ $ten=$_GET["ten"];
       <li>&nbsp;</li>
       <li>&nbsp;</li>
       <li>&nbsp;</li>
-      <li class="timkiem">
-        <input type="text" name="tk" value="   mã đơn hàng cần tìm..."  size="40px"/>
-        <input type="submit" name="tiemkiem" value="Tìm" size="10px" />
+   
       </li>
     </ul>
   </div>
@@ -46,8 +43,11 @@ $ten=$_GET["ten"];
       <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
       <div class="danhsachmuc">
         <ul>
-          <li><a href="../admins/quanlyaccount.php?ten=<?php echo $ten?>">Quản lý Account</a></li>
-          <li><a href="#">Tạo Account</a></li>
+        <ul>
+                	<li><a href="#">BẢNG GIÁ</a></li>
+                    <li><a href="#">TẠO ÐƠN HÀNG</a></li>
+                    <li><a href="#">QUẢN LÝ ÐƠN HÀNG</a></li>
+                </ul>
         </ul>
       </div>
       <!--K?T THÚC M?C DANH SÁCH-->

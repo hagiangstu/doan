@@ -1,5 +1,4 @@
-
- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/trangchu.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -17,7 +16,7 @@
     <div class="menu">
     	<ul >
         	<li><a href="../index.php">Trang Chủ</a></li>
-            <li><a href="#">Bảng Giá</a></li>
+            <li><a href="banggia.php">Bảng Giá</a></li>
             <li><a href="#">Quy Trình Giao Hàng</a></li>
             <li><a href="#">Liên Hệ</a></li>
          	<li><a href="dangky.php">Đăng ký</a></li>
@@ -25,7 +24,7 @@
             <li>&nbsp;</li>
             <li>&nbsp;</li>
             <li>&nbsp;</li>
-          <li class="timkiem"><input type="text" name="tk" value="   mã đơn hàng cần tìm..."  size="40px"/>  <input type="submit" name="tiemkiem" value="Tìm" size="10px" />	</li>
+         
           
       </ul>
         
@@ -36,9 +35,10 @@
         <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
         <div class="danhsachmuc">
           <ul>
-            <li><a href="#">BẢNG GIÁ</a></li>
-            <li><a href="#">TẠO ÐƠN HÀNG</a></li>
-            <li><a href="#">QUẢN LÝ ÐƠN HÀNG</a></li>
+           
+                	<li><a href="../modul/banggia.php">BẢNG GIÁ</a></li>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ CHÍNH SÁCH</a></li>
+                    <li><a href="#">THÔNG TIN ƯU ĐÃI VÀ KHUYẾN MÃI</a></li>
           </ul>
         </div>
         <!--K?T THÚC M?C DANH SÁCH-->

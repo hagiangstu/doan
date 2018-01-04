@@ -63,8 +63,8 @@ function checkSdt($string)
 }
 $sm = postIndex("dangky");
 $Username = postIndex("Username");
-$Password = postIndex("Password");
-$Password1 = postIndex("Password1");
+$Password = md5(postIndex("Password"));
+$Password1 = md5(postIndex("Password1"));
 $Tenkh = postIndex("Tenkh");
 $Diachi = postIndex("Diachi");
 $Gioitinh = postIndex("Gioitinh");
@@ -92,23 +92,16 @@ $Ngaysinh = postIndex("Ngaysinh");
   <div class="header"><img src="../images/banner.jpg" width="1333" height="120" /></div>
   <div class="menu">
     <ul >
-      <li><a href="../modul/index.php">Trang Chủ</a></li>
-      <li><a href="#">Bảng Giá</a></li>
+      <li><a href="../modul/indexadmin.php?ten=<?php echo $ten?>">Trang Chủ</a></li>
       <li><a href="#">Quy Trình Giao Hàng</a></li>
       <li><a href="#">Liên Hệ</a></li>
-      <li><a href="../modul/modul/dangky.php">Đăng ký</a></li>
-      <li><?php 
-	   echo  "Xin chào ".$ten;
-	   ?>
+	  <li><a href="../modul/indexadmin.php?ten=<?php echo $ten?>"><?php echo "Xin chào ".$ten?></a>
        </li>
       <li><a href="../modul/dangxuat.php">Đăng xuất</a></li>
       <li>&nbsp;</li>
       <li>&nbsp;</li>
       <li>&nbsp;</li>
-      <li class="timkiem">
-        <input type="text" name="tk" value="   mã đơn hàng cần tìm..."  size="40px"/>
-        <input type="submit" name="tiemkiem" value="Tìm" size="10px" />
-      </li>
+     
     </ul>
   </div>
   <div class="content">
@@ -117,7 +110,7 @@ $Ngaysinh = postIndex("Ngaysinh");
       <div class="danhsachmuc">
         <ul>
           <li><a href="quanlyaccount.php?ten=<?php echo $ten?>">Quản lý Account</a></li>
-          <li><a href="#">Tạo Account</a></li>
+          <li><a href="dangkynvfix.php?ten=<?php echo $ten?>">Tạo Account</a></li>
         </ul>
       </div>
       <!--K?T THÚC M?C DANH SÁCH-->
@@ -130,7 +123,7 @@ $Ngaysinh = postIndex("Ngaysinh");
       <img src="../images/icon2.png" width="279" height="231" /> <img src="../images/icon3.png" width="281" height="208" /> </div>
     <div class="right"> 
     
-       		<form action="dangkynv.php" method="post" >
+       		<form action="dangkynvfix.php" method="post" >
            
             <table align="center"
             <tr><td></td></tr>
@@ -148,7 +141,7 @@ $Ngaysinh = postIndex("Ngaysinh");
 			<tr><td>Loainv: </td><td><input type="radio" checked="checked" name="Loaikh" value="2" /> quản lý đơn hàng            																					                                        <input type="radio" name="Loaikh" value="3" />tổng đài  
             							    <input type="radio" name="Loaikh" value="4" />giao hàng </td></tr></br>  
             <tr><td><input type="submit" name="dangky" value="Đăng ký" /></td>
-            <td ><a href="dangnhap.php">Quay lại trang đăng nhập</a></td></tr>
+            
           	 	
             </table>
             <tr><td><?php ?></td>
@@ -186,7 +179,7 @@ if ($sm !="")
 
 	{
 	$sql="insert into account(Username,Password,Loaiaccount) values(:Username, :Password,:Loaiaccount )";
-	$arr = array(":Username"=>$_POST["Username"], ":Password"=>$_POST["Password"], ":Loaiaccount"=>2);
+	$arr = array(":Username"=>$_POST["Username"], ":Password"=>md5($_POST["Password"]), ":Loaiaccount"=>2);
 	$stm= $pdh->prepare($sql);
 	$stm->execute($arr);
 		$n = $stm->rowCount();

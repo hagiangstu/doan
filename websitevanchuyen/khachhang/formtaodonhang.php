@@ -23,8 +23,16 @@ function postIndex($index, $value="")
 	return trim($_POST[$index]);
 }
 ?>
+
 <?php
-$sm=postIndex("tao");
+function checkSdt($string)
+{
+	if(strlen($string)<=10||strlen($string)<=11)
+		if (preg_match("/^[0-9]*$/",$string)) 
+		  return true;
+		return false;
+}
+$sm=postIndex("taodh");
 $Loaihang=postIndex("Loaihang"); 
 $Khoiluong=postIndex("Khoiluong");
 $Thuho=postIndex("Thuho");
@@ -37,7 +45,7 @@ $Sdtnguoinhan=postIndex("Sdtnguoinhan");
 ?>
 
 <legend>Thông tin đơn hàng</legend>
-<form action="formtaodonhang.php?ten=<?php echo $ten?> & id=<?php echo $id?>" method="post" >
+<form action="taodonhang.php?ten=<?php echo $ten?> & id=<?php echo $id?>" method="post" >
            
             <table align="center"
             <tr><td></td></tr>
@@ -64,29 +72,47 @@ $Sdtnguoinhan=postIndex("Sdtnguoinhan");
             
           	 	
             </table>
-            <tr><td><?php ?></td>
-            </tr>
+           
             </form>
             
+            
 			<?php
+			$err= "";
+if ($sm !="")
+{
+		if (checkSdt($Sdtnguoinhan)==false) 
+			$err.= "Vui lòng nhập đúng sđt!<br>";
+}
+	if($err != "")
+	{
+	echo $err;
+	}
+	else
+		
+		
 			if (isset($_POST["taodh"]))
 	
 
 	{
 	$sql="insert into donhang(Xuly,IDkh,Loaihang,Khoiluong,Thuho,Hinhthucchuyen,Mota,Thanhtoan,Tennguoinhan,Diachinhan,Sdtnguoinhan,Cuocphi,Ngaytaodonhang) values(:Xuly,:IDkh,:Loaihang,:Khoiluong,:Thuho,:Hinhthucchuyen,:Mota,:Thanhtoan,:Tennguoinhan,:Diachinhan,:Sdtnguoinhan,:Cuocphi, CURRENT_TIME())";
 	$arr = array(":Xuly"=>7,  ":IDkh"=>$id,   ":Loaihang"=>$_POST["Loaihang"],  ":Khoiluong"=>$_POST["Khoiluong"],  ":Thuho"=>$_POST['Thuho'],   ":Hinhthucchuyen"=>$_POST['Hinhthucchuyen'] ,   ":Mota"=>$_POST['Mota'],     ":Thanhtoan"=>$_POST['Thanhtoan'],    ":Tennguoinhan"=>$_POST['Tennguoinhan'],":Diachinhan"=>$_POST['Diachinhan'],":Sdtnguoinhan"=>$_POST['Sdtnguoinhan'],":Cuocphi"=>30000);
-	$stmt=$pdh->prepare($sql);
+		$stmt=$pdh->prepare($sql);
 	$stmt->execute($arr);
 	$n = $stmt->rowCount();
-	if($n>=1)
+		 
+	?>	
+	<tr><td>
+	<?php if($n>=1)
 		{
 				echo"đăng ký thành công";
 				}
 			else
 				echo"đăng ký thất bại";
-		
+			
 	}
-	
+	?>
+	 </td>
+            </tr>
 
-?>
+
             

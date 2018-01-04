@@ -2,7 +2,8 @@
 <?php 
 print_r($_GET);
 $ten=$_GET["ten"];
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/trangchuaccount.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,13 +22,12 @@ $ten=$_GET["ten"];
   <div class="header"><img src="images/banner.jpg" width="1333" height="120" /></div>
   <div class="menu">
     <ul >
-      <li><a href="modul/index.php">Trang Chủ</a></li>
-      <li><a href="#">Bảng Giá</a></li>
+      <li><a href="trangchuaccount.php?ten=<?php echo $ten?>">Trang Chủ</a></li>
       <li><a href="#">Quy Trình Giao Hàng</a></li>
       <li><a href="#">Liên Hệ</a></li>
-      <li><a href="modul/modul/dangky.php">Đăng ký</a></li>
+
       <li><?php 
-	  if(isset($_SESSION["dadangnhap"]))
+	 if(!isset($_SESSION)) session_start();
 	   echo  "Xin chào ".$ten;
 	   ?>
        </li>
@@ -36,8 +36,7 @@ $ten=$_GET["ten"];
       <li>&nbsp;</li>
       <li>&nbsp;</li>
       <li class="timkiem">
-        <input type="text" name="tk" value="   mã đơn hàng cần tìm..."  size="40px"/>
-        <input type="submit" name="tiemkiem" value="Tìm" size="10px" />
+        
       </li>
     </ul>
   </div>
@@ -46,8 +45,10 @@ $ten=$_GET["ten"];
       <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
       <div class="danhsachmuc">
         <ul>
-          <li><a href="admins/quanlyaccount.php?ten=<?php echo $ten?>">Quản lý Account</a></li>
-          <li><a href="#">Tạo Account</a></li>
+          	<ul>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ CHÍNH SÁCH</a></li>
+                    <li><a href="#">THÔNG TIN ƯU ĐÃI VÀ KHUYẾN MÃI</a></li>
+                </ul>
         </ul>
       </div>
       <!--K?T THÚC M?C DANH SÁCH-->
@@ -58,7 +59,15 @@ $ten=$_GET["ten"];
       </div>
       <!--KẾT THÚC MỤC DANH SÁCH-->
       <img src="images/icon2.png" width="279" height="231" /> <img src="images/icon3.png" width="281" height="208" /> </div>
-    <div class="right"> Thông tin người dùng </div>
+    <div class="right">
+    	<p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">THÔNG TIN CẦN BIẾT</p>
+            <p style="text-align:justify; font-size:150%; padding:10px">Hiện nay việc vận chuyển hàng hóa cũng là một nhu cầu không thể thiếu trong đời sống của chúng ta. Xã hội hiện nay càng nhộn nhịp bởi các dịch vụ mua bán và trao đổi hàng hóa, việc vận chuyển những món hàng khi chúng ta hoàn tất việc mua bán,trao đổi cũng không kém.</p>
+          <p style="text-align:justify; font-size:150%; padding:10px">Hãy đến với chúng tôi nếu bạn không có đủ thời gian để vận chuyển. Với phương châm làm việc NHANH-GỌN-LẸ và luôn đặt UY TÍN lên hàng đầu thì các khách hàng hãy yên tâm những món hàng của các bạn từ giá trị cao đến giá trị thấp sẽ luôn được vận chuyển một cách tận tình nhất.</p>
+            <img src="images/icon1.png" width="831" height="307" />
+            <div class="thongtingiaca">
+            	
+            </div> 
+    </div>
   </div>
 </div>
 <!-- InstanceEndEditable -->

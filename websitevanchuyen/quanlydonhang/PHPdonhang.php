@@ -1,7 +1,7 @@
-	<?php
+<?php
 print_r($_GET);
 $ten=$_GET["ten"];
-//$id=$_GET["id"];
+$id=$_GET["id"];
 ?>
 
 
@@ -26,7 +26,7 @@ $loaidh=postIndex("loai");
 	}
 		if (isset($_POST["timloai"]))
 		{
-			$stmt=$pdh->prepare("Select * from donhang	JOIN xuly ON donhang.Xuly = xuly.Maloaixl where IDkh=".$id);
+			$stmt=$pdh->prepare("Select * from donhang	JOIN xuly ON donhang.Xuly = xuly.Maloaixl ");
 			$stmt->execute();
 			$r=$stmt->fetchAll();
 			
@@ -55,7 +55,7 @@ $loaidh=postIndex("loai");
 					$idnvqldh=$row1["IDnvquanlydonhang"];
 					$ngaytao=$row1["Ngaytaodonhang"];
 					$ngayduyet=$row1["Ngayduyetdon"];
-					$Xuly=$row1["Xuly"];
+					$xl=$row1["Xuly"];
 					$xuly=$row1["tenloaixl"];
 					$IDkh=$row1["IDkh"];
 					
@@ -67,11 +67,11 @@ $loaidh=postIndex("loai");
         			<td><?php echo "$ngayduyet"?></td>
 					<td><?php echo "$xuly"?></td>
         			<td><?php echo "$IDkh"?></td>
-                    <td><a href="thongtindonhang1.php?ma=<?php echo $ID?> & xl=<?php echo $Xuly?> & nv=<?php echo $id?> & ten=<?php echo $ten?>">Thông tin</a></td>
+                    <td><a href="thongtindonhang.php?ma=<?php echo $ID?> & nv=<?php echo $id?> & xl=<?php echo $xl?>& ten=<?php echo $ten?>">Thông tin</a></td>
                     </tr>
                     
+                    
 		<?php
-			
 			}
 			}else
 				if($loaidh=="2")
@@ -82,10 +82,10 @@ $loaidh=postIndex("loai");
 					$idnvqldh=$row1["IDnvquanlydonhang"];
 					$ngaytao=$row1["Ngaytaodonhang"];
 					$ngayduyet=$row1["Ngayduyetdon"];
-					$Xuly=$row1["Xuly"];
+					$xl=$row1["Xuly"];
 					$xuly=$row1["tenloaixl"];
 					$IDkh=$row1["IDkh"];
-					if($Xuly=="7"){
+					if($xl=="7"){
 					?>
 					<tr><td><?php echo "$ID"?></td>
         			<td><?php echo "$idnvch"?></td>
@@ -94,7 +94,7 @@ $loaidh=postIndex("loai");
         			<td><?php echo "$ngayduyet"?></td>
 					<td><?php echo "$xuly"?></td>
         			<td><?php echo "$IDkh"?></td>
-                    <td><a href="thongtindonhang1.php?ma=<?php echo $ID?> & xl=<?php echo $Xuly?> & nv=<?php echo $id?>&ten=<?php echo $ten?>">Thông tin</a></td>
+                    <td><a href="thongtindonhang.php?ma=<?php echo $ID?> & nv=<?php echo $id?> & xl=<?php echo $xl?>& ten=<?php echo $ten?>">Thông tin</a></td>
                     </tr>
                     
                     <?php
@@ -111,10 +111,10 @@ $loaidh=postIndex("loai");
 					$idnvqldh=$row1["IDnvquanlydonhang"];
 					$ngaytao=$row1["Ngaytaodonhang"];
 					$ngayduyet=$row1["Ngayduyetdon"];
-					$Xuly=$row1["Xuly"];
+					$xl=$row1["Xuly"];
 					$xuly=$row1["tenloaixl"];
 					$IDkh=$row1["IDkh"];
-					if($Xuly==8){
+					if($xl==8){
 					?>
 					<tr><td><?php echo "$ID"?></td>
         			<td><?php echo "$idnvch"?></td>
@@ -123,7 +123,7 @@ $loaidh=postIndex("loai");
         			<td><?php echo "$ngayduyet"?></td>
 					<td><?php echo "$xuly"?></td>
         			<td><?php echo "$IDkh"?></td>
-                    <td><a href="thongtindonhang1.php?ma=<?php echo $ID?> &xl=<?php echo $Xuly?>& nv=<?php echo $id?>&ten=<?php echo $ten?>">Thông tin</a></td>
+                    <td><a href="thongtindonhang.php?ma=<?php echo $ID?> & nv=<?php echo $id?> & xl=<?php echo $xl?>& ten=<?php echo $ten?>">Thông tin</a></td>
                     </tr>
                     
                     <?php
@@ -139,10 +139,10 @@ $loaidh=postIndex("loai");
 					$idnvqldh=$row1["IDnvquanlydonhang"];
 					$ngaytao=$row1["Ngaytaodonhang"];
 					$ngayduyet=$row1["Ngayduyetdon"];
-					$Xuly=$row1["Xuly"];
+					$xl=$row1["Xuly"];
 					$xuly=$row1["tenloaixl"];
 					$IDkh=$row1["IDkh"];
-					if($Xuly==9){
+					if($xl==9){
 					?>
 					<tr><td><?php echo "$ID"?></td>
         			<td><?php echo "$idnvch"?></td>
@@ -151,7 +151,7 @@ $loaidh=postIndex("loai");
         			<td><?php echo "$ngayduyet"?></td>
 					<td><?php echo "$xuly"?></td>
         			<td><?php echo "$IDkh"?></td>
-                    <td><a href="thongtindonhang1.php?ma=<?php echo $ID?>  & xl=<?php echo $Xuly  ?> & nv=<?php echo $id?> &ten=<?php echo $ten?>">Thông tin</a></td>
+                    <td><a href="thongtindonhang.php?ten=<?php echo $ten?> & ma=<?php echo $ID?>& xl=<?php echo $xl?> & nv=<?php echo $id?>">Thông tin</a></td>
                     </tr>
                     
                     <?php

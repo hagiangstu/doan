@@ -61,7 +61,16 @@ $Loaikh = postIndex("Loaikh");
 $Ngaysinh = postIndex("Ngaysinh");
 
 ?> 
+<?php
+$stmp=$pdh->prepare("Select * from account where Username='$Username'");
+$stmp->execute(); 
 
+$m=$stmp->rowCount();
+$stmp=$pdh->prepare("Select * from khachhang where Email='$Email'");
+$stmp->execute(); 
+
+$s=$stmp->rowCount();
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="../Templates/trangchu.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
@@ -80,7 +89,7 @@ $Ngaysinh = postIndex("Ngaysinh");
     <div class="menu">
     	<ul >
         	<li><a href="../index.php">Trang Chủ</a></li>
-            <li><a href="#">Bảng Giá</a></li>
+            <li><a href="banggia.php">Bảng Giá</a></li>
             <li><a href="#">Quy Trình Giao Hàng</a></li>
             <li><a href="#">Liên Hệ</a></li>
          	<li><a href="dangky.php">Đăng ký</a></li>
@@ -99,9 +108,10 @@ $Ngaysinh = postIndex("Ngaysinh");
         <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
         <div class="danhsachmuc">
           <ul>
-            <li><a href="#">BẢNG GIÁ</a></li>
-            <li><a href="#">TẠO ÐƠN HÀNG</a></li>
-            <li><a href="#">QUẢN LÝ ÐƠN HÀNG</a></li>
+           
+                	<li><a href="modul/banggia.php">BẢNG GIÁ</a></li>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ CHÍNH SÁCH</a></li>
+                    <li><a href="#">THÔNG TIN ƯU ĐÃI VÀ KHUYẾN MÃI</a></li>
           </ul>
         </div>
         <!--K?T THÚC M?C DANH SÁCH-->
@@ -134,7 +144,7 @@ $Ngaysinh = postIndex("Ngaysinh");
             <tr><td>Ngày sinh: </td><td><input type="date" name="Ngaysinh" required/></td></tr></br>
 			<tr><td>Loaikh: </td><td><input type="radio" checked="checked" name="Loaikh" value="1" /> nhỏ lẻ            																					                                        <input type="radio" name="Loaikh" value="2" />Hợp đồng </td></tr></br>     
             <tr><td><input type="submit" name="dangky" value="Đăng ký" /></td>
-            <td ><a href="dangnhap.php">Quay lại trang đăng nhập</a></td></tr>
+            <td ><a href="dangnhap1.php">Quay lại trang đăng nhập</a></td></tr>
           	 	
             </table>
             <tr><td><?php ?></td>
@@ -149,6 +159,8 @@ if ($sm !="")
 	if (strlen($Username)<6 ) 		{$err .=" Username ít nhất phải 6 ký tự!<br>";}
 	if ($Password!= $Password1) 	{$err .="Mật khẩu và mật khẩu nhập lại không khớp. <br>";}
 	if(str_word_count($Tenkh)<2) 	{$err .="Họ tên phải chứa ít nhất 2 từ ";}
+	if($m>0) 						{$err .="Tên tài khoản tồn tại<br>";}
+	if($s>0)						{$err .="Email tồn tại<br>";}	
 
 		if (checkUserName($Username)==false) 
 			{$err.= "Username: Các ký tự được phép: a-z, A-Z, số 0-9, ký tự ., _ và - <br>";
@@ -173,7 +185,7 @@ if ($sm !="")
 
 	{
 	$sql="insert into account(Username,Password,Loaiaccount) values(:Username, :Password,:Loaiaccount )";
-	$arr = array(":Username"=>$_POST["Username"], ":Password"=>$_POST["Password"], ":Loaiaccount"=>3);
+	$arr = array(":Username"=>$_POST["Username"], ":Password"=>md5($_POST["Password"]), ":Loaiaccount"=>3);
 	$stm= $pdh->prepare($sql);
 	$stm->execute($arr);
 

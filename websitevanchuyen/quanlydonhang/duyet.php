@@ -1,7 +1,7 @@
 <?php
 
 print_r($_GET);
-$ma=$_GET["manv"];
+$manv=$_GET["manv"];
 $madh=$_GET["madh"];
 
 ?>
@@ -14,43 +14,47 @@ $madh=$_GET["madh"];
 		echo $e->getMessage(); exit;
 	}
 ?>
-
-<form action="PHP.php?ma=<?php echo $manv?> & madh=<?php echo $madh?>" method="post">
-<table>
-<tr><td>Nhân viên vận chuyển:</td><td><input  type="text" name="id" required /></td></tr>
-</br>
-<tr><td>Ngày duyệt  		:</td><td><input type="date" name="ngay"/>	</td></br>
-                            <tr><td><input type="submit" name="update" value="thêm" onclick=""/></td>
-
-</tr>
-</table>
-</form>
-
- 
 <?php
 function postIndex($index, $value="")
 {
 	if (!isset($_POST[$index]))	return $value;
 	return trim($_POST[$index]);
 }
- $update=postIndex("update");
+ $sm=postIndex("sm");
  $id=postIndex("id");
- $ngay=postIndex("ngay");
-print_r($update);
+
+
 print_r($id);
-print_r($ngay);
+
  ?>
+<form action="duyet.php?manv=<?php echo $manv?> & madh=<?php echo $madh?>" method="post">
+<table>
+<tr><td>Nhân viên vận chuyển:</td><td><input  type="text" name="id" required /></td></tr>
+</br>
+
+ <tr><td><input type="submit" name="sm" value="thêm" /></td>
+
+</tr>
+</table>
+</form>
+
+ 
+
  <?php
 
-		if (isset($_POST["update"])){
+		if (isset($_POST["sm"])){
 		
-			$stmt=$pdh->prepare("UPDATE donhang set IDnvquanlydonhang='$ma',Xuly='8',Ngayduyetdon='$ngay' ,IDnvchuyenhang= '$id'			                                where IDdonhang='$madh'");
-		//	$arr=array(":ngay"=>$_POST["ngay"],":id"=>$_POST["id"]);
+			$stmt=$pdh->prepare("UPDATE donhang set IDnvchuyenhang='$id',Xuly='8',IDnvquanlydonhang='$manv',Ngayduyetdon=CURRENT_TIME() where IDdonhang='$madh'");
+		
 			$stmt->execute();
 			$n = $stmt->rowCount();
 	if($n>=1)
 		{
 				echo"duyệt thành công";
+				?>
+                <br />
+               <a href='javascript:history.go(-4)'>Quay lại trang trước</a>
+                <?php
 				}
 			else
 				echo"duyệt thất bại";

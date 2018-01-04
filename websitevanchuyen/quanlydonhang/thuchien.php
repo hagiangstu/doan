@@ -1,8 +1,10 @@
 <?php
 print_r($_GET);
+$manv=$_GET["manv"];
 $madh=$_GET["madh"];
+
 ?>
- <?php 
+<?php
 	try{
 	$pdh=new PDO("mysql:host=localhost;dbname=webchuyenhang","root","");
 	$pdh->query("set name 'utf8'");
@@ -10,22 +12,22 @@ $madh=$_GET["madh"];
 	catch(Exception $e){
 		echo $e->getMessage(); exit;
 	}
+?>
+<?php
+	$stmt=$pdh->prepare("UPDATE donhang set Xuly='9' where IDdonhang='$madh'");
 		
-		
-			$stmt=$pdh->prepare("DELETE FROM donhang where IDdonhang=".$madh);
 			$stmt->execute();
 			$n = $stmt->rowCount();
 	if($n>=1)
 		{
-				echo"xóa thành công";
+				echo"Đã thực hiện";
 				?>
                 <br />
-                <tr><td><a href='javascript:history.go(-3)'>Quay lại trang trước</a></td></tr>
-                <?php
+				 <a href='javascript:history.go(-3)'>Quay lại trang trước</a>
+                 <?php
 				}
 			else
-				echo"xóa thất bại";
+				echo"Thất bại";
 		
-	
-		
-?>
+	?>
+            

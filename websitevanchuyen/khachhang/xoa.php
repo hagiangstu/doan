@@ -17,10 +17,14 @@ $madh=$_GET["madh"];
 			$n = $stmt->rowCount();
 	if($n>=1)
 		{
-				echo"xóa thành công";
+				echo"hủy thành công";
+				?>
+                <br />
+                <tr><td><a href='javascript:history.go(-3)'>Quay lại trang trước</a></td></tr>
+                <?php
 				}
 			else
-				echo"xóa thất bại";
+				echo"hủy thất bại";
 		
 	
 		

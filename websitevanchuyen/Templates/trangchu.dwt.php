@@ -16,7 +16,7 @@
     <div class="menu">
     	<ul >
         	<li><a href="../index.php">Trang Chủ</a></li>
-            <li><a href="#">Bảng Giá</a></li>
+            <li><a href="../modul/banggia.php">Bảng Giá</a></li>
             <li><a href="#">Quy Trình Giao Hàng</a></li>
             <li><a href="#">Liên Hệ</a></li>
          	<li><a href="../modul/dangky.php">Đăng ký</a></li>
@@ -24,7 +24,7 @@
             <li>&nbsp;</li>
             <li>&nbsp;</li>
             <li>&nbsp;</li>
-          <li class="timkiem"><input type="text" name="tk" value="   mã đơn hàng cần tìm..."  size="40px"/>  <input type="submit" name="tiemkiem" value="Tìm" size="10px" />	</li>
+         
           
       </ul>
         
@@ -35,9 +35,10 @@
         <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
         <div class="danhsachmuc">
           <ul>
-            <li><a href="#">BẢNG GIÁ</a></li>
-            <li><a href="#">TẠO ÐƠN HÀNG</a></li>
-            <li><a href="#">QUẢN LÝ ÐƠN HÀNG</a></li>
+            
+                	<li><a href="modul/banggia.php">BẢNG GIÁ</a></li>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ CHÍNH SÁCH</a></li>
+                    <li><a href="#">THÔNG TIN ƯU ĐÃI VÀ KHUYẾN MÃI</a></li>
           </ul>
         </div>
         <!--K?T THÚC M?C DANH SÁCH-->
@@ -54,16 +55,7 @@
         <p style="text-align:justify; font-size:150%; padding:10px">Hãy đến với chúng tôi nếu bạn không có đủ thời gian để vận chuyển. Với phương châm làm việc NHANH-GỌN-LẸ và luôn đặt UY TÍN lên hàng đầu thì các khách hàng hãy yên tâm những món hàng của các bạn từ giá trị cao đến giá trị thấp sẽ luôn được vận chuyển một cách tận tình nhất.</p>
         <img src="../images/icon1.png" width="831" height="307" />
         <div class="thongtingiaca">
-          <ul>
-            <li><a href="#">
-              <p>GIÁ CƯỚC TRONG NỘI THÀNH</p>
-            </a></li>
-          </ul>
-          <ul>
-            <li><a href="#">
-              <p>GIÁ CƯỚC NGOÀI NỘI THÀNH</p>
-            </a></li>
-          </ul>
+       	
         </div>
       </div>
     </div>

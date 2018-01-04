@@ -1,18 +1,4 @@
-
-<?php
-	if(!isset($_SESSION)) session_start();
-	if(!isset($_SESSION["admin"]))
-	{
-		header('location:../modul/dangnhap1.php');
-	}
-	
-	
-
-?>
-<?php 
-print_r($_GET);
-$ten=$_GET["ten"];
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,15 +12,16 @@ $ten=$_GET["ten"];
 	<div class="header"><img src="../images/banner.jpg" width="1333" height="120" /></div>
     <div class="menu">
     	<ul >
-        	<li><a href="indexadmin.php?ten=<?php echo $ten?>">Trang Chủ</a></li>
+        	<li><a href="../index.php">Trang Chủ</a></li>
+            <li><a href="banggia.php">Bảng Giá</a></li>
             <li><a href="#">Quy Trình Giao Hàng</a></li>
-            <li><a href="#">Liên Hệ</a></li> 
-            <li><a href="indexadmin.php?ten=<?php echo $ten?>"><?php echo  "Xin chào ".$ten?></a></li>
-            <li><a href="dangxuat.php">Đăng xuất</a> </li>
+            <li><a href="#">Liên Hệ</a></li>
+            <li><a href="dangky.php">Đăng ký</a></li>
+            <li><a href="dangnhap1.php">Ðăng Nhập</a></li>
             <li>&nbsp;</li>
             <li>&nbsp;</li>
             <li>&nbsp;</li>
-           
+          
           
         </ul>
         
@@ -44,8 +31,9 @@ $ten=$_GET["ten"];
         	<p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
             <div class="danhsachmuc">
             	<ul>
-                    <li><a href="../admins/quanlyaccount.php?ten=<?php echo $ten?>">Quản lý tài khoản</a></li>
-                    <li><a href="../admins/dangkynvfix.php?ten=<?php echo $ten?>">Tạo tài khoản</a></li>
+                	<li><a href="banggia.php">BẢNG GIÁ</a></li>
+                    <li><a href="#">ĐIỀU KHOẢN VÀ CHÍNH SÁCH</a></li>
+                    <li><a href="#">THÔNG TIN ƯU ĐÃI VÀ KHUYẾN MÃI</a></li>
                 </ul>
             </div><!--K?T THÚC M?C DANH SÁCH-->
           <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">CHĂM SÓC KHÁCH HÀNG</p>
@@ -57,9 +45,22 @@ $ten=$_GET["ten"];
             <img src="../images/icon3.png" width="281" height="208" />
         </div>
         <div class="right">
-        	<table align="center">
-             <tr><td><?php ?></td></tr>
-             </table>
+        <form >
+<table border="1">
+<tr><td width="50px" height="30px">Nội thành</td><td width="100px">Ngoại thành 1</td><td width="100px">Ngoại thành 2</td></tr>
+<tr><td >30000vnđ</td><td >50000vnđ</td><td >70000vnđ</td>
+</table>
+<table >
+<tr><td>	-Khu vực thuộc nội thành:Quận 1,2,3,4,5,6,7,8,9,10,11,Tân Bình ,Tân Phú,Phú Nhuận,Bình Thạnh, Gò Vấp.</td></tr>
+ <tr><td>   -Khu vực thuộc ngoại thành: </td></tr>
+  <tr><td>  	+Ngoại thành 1:Quận 9,12,Thủ Đức ,Bình Tân.</td></tr>
+   <tr><td>     +Ngoại thành 2:Hóc môn,Bình Chánh, Nhà Bè, Củ Chi. </td></tr>
+<tr><td>     Vì lý do đặc thù khoảng cách vận chuyển hàng hóa nên những đơn hàng không thuộc thành phố Hồ Chí Minh cước phí vận 		             chuyển sẽ được nhân viên tổng đài thông báo trực tiếp cho khách hàng.</td></tr>
+</table>
+</form>
+
+            <div class="thongtingiaca">
+            	
             </div>
         </div>
     </div>

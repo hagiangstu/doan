@@ -14,7 +14,7 @@ if(!isset($_POST['dangnhap']))
 	echo "Mời bạn nhập tên đăng nhập và mật khẩu";
 }
 $u=$_POST["taikhoan"];
-$p=$_POST["matkhau"];
+$p=md5($_POST["matkhau"]);
 $stmt=$pdh->prepare("select * from account where Username='$u' and Password='$p'");
 $stmt->execute();
 $data=$stmt->fetchAll();

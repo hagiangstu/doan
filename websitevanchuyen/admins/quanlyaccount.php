@@ -1,4 +1,13 @@
+<?php
+	if(!isset($_SESSION)) session_start();
+	if(!isset($_SESSION["admin"]))
+	{
+		header('location:../modul/dangnhap1.php');
+	}
+	
+	
 
+?>
 <?php 
 print_r($_GET);
 $ten=$_GET["ten"];
@@ -19,17 +28,15 @@ $ten=$_GET["ten"];
 	<div class="header"><img src="../images/banner.jpg" width="1333" height="120" /></div>
     <div class="menu">
     	<ul >
-        	<li><a href="../index.php">Trang Chủ</a></li>
-            <li><a href="#">Bảng Giá</a></li>
+        	<li><a href="../modul/indexadmin.php?ten=<?php echo $ten?>">Trang Chủ</a></li>
             <li><a href="#">Quy Trình Giao Hàng</a></li>
             <li><a href="#">Liên Hệ</a></li>
-            <li><a href="../modul/dangky.php">Đăng ký</a></li>
-            <li><?php echo  "Xin chào ".$ten?></li>
+            <li><a href="indexadmin.php?ten=<?php echo $ten?>"><?php echo  "Xin chào ".$ten?></a></li>
             <li><a href="../modul/dangxuat.php">Đăng xuất</a> </li>
             <li>&nbsp;</li>
             <li>&nbsp;</li>
             <li>&nbsp;</li>
-            <li class="timkiem"><input type="text" name="tk" value="   mã đơn hàng cần tìm..."  size="40px"/>  <input type="submit" name="tiemkiem" value="Tìm" size="10px" />	</li>
+            
           
         </ul>
         
@@ -39,8 +46,8 @@ $ten=$_GET["ten"];
         	<p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">DANH SÁCH</p>
             <div class="danhsachmuc">
             	<ul>
-                    <li><a href="#">Quản lý Account</a></li>
-                    <li><a href="#">Tạo Account</a></li>
+                    <li><a href="quanlyaccount.php?ten=<?php echo $ten?>">Quản lý tài khoản</a></li>
+                    <li><a href="dangkynvfix.php?ten=<?php echo $ten?>">Tạo tài khoản</a></li>
                 </ul>
             </div><!--K?T THÚC M?C DANH SÁCH-->
           <p style="text-align:center; background:#F00; color:#FFF; padding:10px; margin-top:1px">CHĂM SÓC KHÁCH HÀNG</p>
@@ -52,8 +59,8 @@ $ten=$_GET["ten"];
             <img src="../images/icon3.png" width="281" height="208" />
         </div>
         <div class="right">
-        	 <fieldset>Quản lý account</fieldset>
-       <form action="account.php?User=<?php echo $ten?>" method="post">
+        	 <fieldset>Quản lý tài khoản</fieldset>
+       <form action="quanlyaccount.php?ten=<?php echo $ten?>" method="post">
        <table align="center">
        <div>
         <tr> <td> chọn loại account</td> 
@@ -71,6 +78,10 @@ $ten=$_GET["ten"];
        </div>
        </table>
         </form>
+        <table align="center">
+             <tr><td><?php include"account.php"?></td></tr>
+             
+             </table>
             </div>
         </div>
     </div>

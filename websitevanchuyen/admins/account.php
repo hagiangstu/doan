@@ -1,7 +1,7 @@
 
 <?php
 print_r($_GET);
-$ten=$_GET["User"]; 
+$ten=$_GET["ten"]; 
 ?><?php
 function postIndex($index, $value="")
 {
@@ -54,8 +54,8 @@ if($loaiac=="3")
 <td><?php echo "$User"?></td>
 <td><?php echo "$Password"?></td>
 <td><?php echo "$Tenloai"?></td>
-<td><a href="xoaac.php?ten=<?php echo $User?>"/a>Xóa </td>
-<td><a href="doimatkhau.php?ten=<?php echo $User?>"/a>Đổi mật khẩu</td>
+<td><a href="xoaac.php?User=<?php echo $User?> & ten=<?php echo $ten?>"/a>Xóa </td>
+<td><a href="doimatkhau.php?User=<?php echo $User?>& ten=<?php echo $ten?>"/a>Đổi mật khẩu</td>
 </tr>
 <?php
 }
@@ -74,8 +74,8 @@ if($loaiac=="3")
 <tr><td><?php echo "$User"?></td>
 <td><?php echo "$Password"?></td>
 <td><?php echo "$Tenloai"?></td>
-<td><a href="xoaac.php?ten=<?php echo $User?>"/a>Xóa </td>
-<td><a href="doimatkhau.php?ten=<?php echo $User?>"/a>Đổi mật khẩu</td>
+<td><a href="xoaac.php?User=<?php echo $User?> & ten=<?php echo $ten?>"/a>Xóa </td>
+<td><a href="doimatkhau.php?User=<?php echo $User?>& ten=<?php echo $ten?>"/a>Đổi mật khẩu</td>
 </tr>
 <?php
 }
@@ -95,8 +95,8 @@ if($loaiac==2)
 <td><?php echo "$User"?></td>
 <td><?php echo "$Password"?></td>
 <td><?php echo "$Tenloai"?></td>
-<td><a href="xoaac.php?ten=<?php echo $User?>"/a>Xóa </td>
-<td><a href="doimatkhau.php?ten=<?php echo $User?>"/a>Đổi mật khẩu</td>
+<td><a href="xoaac.php?User=<?php echo $User?>& ten=<?php echo $ten?>"/a>Xóa </td>
+<td><a href="doimatkhau.php?User=<?php echo $User?>& ten=<?php echo $ten?>"/a>Đổi mật khẩu</td>
 </tr>
 <?php
 }
